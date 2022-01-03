@@ -12,3 +12,7 @@ type Query {
     cars: [Car!]!
     car(carID: ID!): Car!
 }
+
+schema {
+    query: Query
+}

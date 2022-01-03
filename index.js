@@ -1,18 +1,15 @@
-import  express from 'express';
-import { graphqlHTTP } from 'express-graphql';
-import { graphql } from 'graphql';
-import schema   from './graphql/queries.mjs';
-import { mergeTypeDefs } from './graphql/typedefs.mjs';
+const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
+const { schema } = require('./graphql/index.js');
+const { graphql, buildSchema } = require('graphql');
+const { makeExecutableSchema } = require('@graphql-tools/schema');
+const { dataSources } = require('./dataSource/index');
+const graphQLPath = '/graphql';
+const graphQLPort = 4000;
 
-const app=express();
-
-
-
-
-console.log(typeof graphqlHTTP);
-const graphQLPath='/graphql';
-const graphQLPort=4000;
-app.use(graphQLPath,graphqlHTTP({schema: schema.schema, graphiql: true}));
+const app = express();
+const s = makeExecutableSchema({ typeDefs: schema.typeDefs, resolvers: schema.resolverDefs });
+app.use(graphQLPath,graphqlHTTP({schema: s, graphiql: true}));
 
 app.listen(graphQLPort, () => { 
     console.log(`Running a GraphQL server on http://localhost:${graphQLPort}${graphQLPath}.`);
