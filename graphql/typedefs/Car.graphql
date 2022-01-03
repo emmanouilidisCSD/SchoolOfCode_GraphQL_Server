@@ -1,0 +1,14 @@
+type Car {
+    carID: ID!
+    MANUFACTURER: String!
+    MODEL: String!
+    COLOR: String!
+    YEAR_OF_MANUFACTURE: Int!
+    VIN: String!
+    FOR_SALE: Boolean!
+}
+
+type Query {
+    cars: [Car!]!
+    car(carID: ID!): Car!
+}

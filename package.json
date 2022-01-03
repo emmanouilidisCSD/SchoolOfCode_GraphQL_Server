@@ -1,11 +1,15 @@
 {
+  "type": "module",
   "scripts": {
-     "start" :"node index.js"
+    "start": "node index.js"
   },
   "dependencies": {
+    "@graphql-tools/load-files": "^6.5.3",
+    "@louislam/sqlite3": "^6.0.1",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
-    "sqlite3": "^5.0.2"
+    "graphql-tools": "^8.2.0",
+    "path": "^0.12.7"
   }
 }
