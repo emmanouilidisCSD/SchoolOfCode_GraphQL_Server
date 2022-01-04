@@ -3,15 +3,9 @@ const { dataSources } = require("../../dataSource/index.js");
 module.exports = {
     Query: {
         car: (parent, args, context, info) => {
-            console.log("This is the car-resolvers.car() in car-resolvers.js");
-            console.log(dataSources);
-            console.log(dataSources.carData);
-            return dataSources.carData.getCar( args.carID)
+            return dataSources.carData.getCar(args.carID)
         },
         cars: (parent, args, context, info) => {
-            console.log("This is the car-resolvers.cars() in car-resolvers.js");
-            console.log(dataSources);
-            console.log(dataSources.carData);
             return dataSources.carData.getCars()
         }
     },

@@ -1,0 +1,15 @@
+type Salesman {
+    salesmanID: ID!
+    NAME: String!
+    SURNAME: String!
+    carsSold: [Car]!
+}
+
+type Query {
+    salesmen: [Salesman!]!
+    salesman(salesmanID: ID!): Salesman!
+}
+
+schema {
+    query: Query
+}

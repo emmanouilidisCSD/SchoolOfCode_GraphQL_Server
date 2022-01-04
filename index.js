@@ -9,8 +9,8 @@ const graphQLPort = 4000;
 
 const app = express();
 const s = makeExecutableSchema({ typeDefs: schema.typeDefs, resolvers: schema.resolverDefs });
-app.use(graphQLPath,graphqlHTTP({schema: s, graphiql: true}));
+app.use(graphQLPath, graphqlHTTP({ schema: s, graphiql: true }));
 
-app.listen(graphQLPort, () => { 
+app.listen(graphQLPort, () => {
     console.log(`Running a GraphQL server on http://localhost:${graphQLPort}${graphQLPath}.`);
 });
