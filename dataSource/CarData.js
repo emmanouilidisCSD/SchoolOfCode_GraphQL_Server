@@ -38,4 +38,37 @@ exports.CarData = class CarData {
             });
         });
     }
+
+
+    //createCar(manufacturer: String!,model: String!, color: String!,year: String!, vin: String!,for_sale: Boolean,used: Boolean): Car!;
+    createCar(args) {
+        let values = [args.MANUFACTURER,args.MODEL,args.COLOR,args.YEAR_OF_MANUFACTURE,args.VIN];
+        if ('FOR_SALE' in args) {
+            values.push(args.FOR_SALE)
+        } else {
+            values.push(false);
+        }
+        if ('USED' in args) {
+            values.push(args.USED)
+        } else {
+            values.push(false)
+        }
+        console.log(values);
+        return new Promise((resolve, reject) => {
+            this.db.run('INSERT INTO CAR (MANUFACTURER,MODEL,COLOR,YEAR_OF_MAN,VIN,FOR_SALE,USED) VALUES(?,?,?,?,?,?,?)',values,function (err) {
+                if (err) {
+                    reject("Insert Failed");
+                    return;
+                }
+                resolve(`Insert was successful.Car ID: ${this.lastID}`);
+            });
+        });
+    }
+/*
+    //    updateCar(carID: ID!,manufacturer: String,model: String, color: String,year: String, vin: String,for_sale: Boolean,used: Boolean): Car!;
+    updateCar: (parent,args) => {
+        return dataSources.carData.updateCar(args.carID,args)
+    }
+
+*/
 }

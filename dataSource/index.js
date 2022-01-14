@@ -7,7 +7,7 @@ const { InvoiceData } = require("./InvoiceData.js");
 
 
 const dbpath = path.resolve() + "/data/dealership.db";
-db = new sqlite3.Database(dbpath, sqlite3.OPEN_READONLY);
+db = new sqlite3.Database(dbpath, sqlite3.OPEN_READWRITE);
 
 exports.dataSources = {
     carData: new CarData(db),

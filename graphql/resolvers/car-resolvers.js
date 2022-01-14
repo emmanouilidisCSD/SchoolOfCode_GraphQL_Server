@@ -9,6 +9,17 @@ module.exports = {
             return dataSources.carData.getCars()
         }
     },
+    Mutation: {
+        createCar: (parent,args) => {
+            console.log("CreateCar resolver running");
+            return dataSources.carData.createCar(args);
+        },
+        
+        /*updateCar: (parent,args) => {
+            return dataSources.carData.updateCar(args.carID,args)
+        }
+        */
+    },
     Car: {
         carID(parent, args) {
             return parent.carID;

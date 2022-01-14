@@ -6,11 +6,16 @@ type Car {
     YEAR_OF_MANUFACTURE: Int!
     VIN: String!
     FOR_SALE: Boolean!
+    USED: Boolean!
 }
 
 type Query {
     cars: [Car!]!
     car(carID: ID!): Car!
+}
+
+type Mutation {
+    createCar(MANUFACTURER: String!,MODEL: String!, COLOR: String!,YEAR_OF_MANUFACTURE: Int!, VIN: String!,FOR_SALE: Boolean,USED: Boolean): String!
 }
 
 schema {
