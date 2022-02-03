@@ -6,8 +6,8 @@ type Salesman {
 }
 
 type Query {
-    salesmen: [Salesman!]!
-    salesman(salesmanID: ID!): Salesman!
+    getAllSalesmen: [Salesman!]!
+    getSalesmanByID(salesmanID: ID!): Salesman!
 }
 
 schema {

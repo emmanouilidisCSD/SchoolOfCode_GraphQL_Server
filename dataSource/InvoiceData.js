@@ -38,4 +38,15 @@ exports.InvoiceData = class InvoiceData {
             });
         });
     }
+
+    getInvoicesByCarID(carID) {
+        return new Promise((resolve, reject) => {
+            this.db.all(`SELECT * FROM INVOICE WHERE INVOICE.carID = ${carID};`, function (err, rows) {
+                if (err) {
+                    reject([]);
+                }
+                resolve(rows);
+            });
+        });
+    }
 }

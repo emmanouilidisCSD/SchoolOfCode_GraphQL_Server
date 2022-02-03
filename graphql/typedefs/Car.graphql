@@ -3,19 +3,22 @@ type Car {
     MANUFACTURER: String!
     MODEL: String!
     COLOR: String!
-    YEAR_OF_MANUFACTURE: Int!
+    YEAR_OF_MAN: Int!
     VIN: String!
     FOR_SALE: Boolean!
     USED: Boolean!
 }
 
 type Query {
-    cars: [Car!]!
-    car(carID: ID!): Car!
+    getAllCars: [Car!]!
+    getCarByID(carID: ID!): Car!
 }
 
 type Mutation {
-    createCar(MANUFACTURER: String!,MODEL: String!, COLOR: String!,YEAR_OF_MANUFACTURE: Int!, VIN: String!,FOR_SALE: Boolean,USED: Boolean): String!
+    createCar(MANUFACTURER: String!,MODEL: String!, COLOR: String!,YEAR_OF_MAN: Int!, VIN: String!,FOR_SALE: Boolean,USED: Boolean): String!
+    updateCarByID(carID: Int!,MANUFACTURER: String,MODEL: String, COLOR: String,YEAR_OF_MAN: Int, VIN: String,FOR_SALE: Boolean,USED: Boolean): String!
+    deleteCarByID(carID: Int!): String!
+    delecteCarsBetweenIDs(minID: Int!,maxID: Int): String!
 }
 
 schema {

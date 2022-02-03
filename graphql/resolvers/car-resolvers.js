@@ -2,23 +2,26 @@ const { dataSources } = require("../../dataSource/index.js");
 
 module.exports = {
     Query: {
-        car: (parent, args, context, info) => {
-            return dataSources.carData.getCar(args.carID)
+        getCarByID: (parent, args, context, info) => {
+            return dataSources.carData.getCarByID(args.carID)
         },
-        cars: (parent, args, context, info) => {
+        getAllCars: (parent, args, context, info) => {
             return dataSources.carData.getCars()
         }
     },
     Mutation: {
         createCar: (parent,args) => {
-            console.log("CreateCar resolver running");
             return dataSources.carData.createCar(args);
         },
-        
-        /*updateCar: (parent,args) => {
-            return dataSources.carData.updateCar(args.carID,args)
+        updateCarByID: (parent,args) => {
+            return dataSources.carData.updateCarByID(args.carID,args)
+        },
+        deleteCarByID: (parent,args,context,info) => {
+            return dataSources.carData.deleteCarByID(args.carID);
+        },
+        delecteCarsBetweenIDs: (parent,args,context,info) => {
+            return dataSources.carData.deleteCarBetweenIDs(args.minID,args.maxID);
         }
-        */
     },
     Car: {
         carID(parent, args) {
@@ -33,8 +36,8 @@ module.exports = {
         COLOR(parent, args) {
             return parent.COLOR;
         },
-        YEAR_OF_MANUFACTURE(parent, args) {
-            return parent.YEAR_OF_MANUFACTURE;
+        YEAR_OF_MAN(parent, args) {
+            return parent.YEAR_OF_MAN;
         },
         VIN(parent, args) {
             return parent.VIN;

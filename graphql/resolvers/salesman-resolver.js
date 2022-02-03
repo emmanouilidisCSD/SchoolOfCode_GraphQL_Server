@@ -3,10 +3,10 @@ const { dataSources } = require("../../dataSource/index.js");
 
 module.exports = {
     Query: {
-        salesman: (parent, args, context, info) => {
-            return dataSources.salesmanData.getSalesman(args.salesmanID);
+        getSalesmanByID: (parent, args, context, info) => {
+            return dataSources.salesmanData.getSalesmanByID(args.salesmanID);
         },
-        salesmen: (parent, args, context, info) => {
+        getAllSalesmen: (parent, args, context, info) => {
             return dataSources.salesmanData.getSalesmen();
         },
 
