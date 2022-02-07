@@ -43,14 +43,14 @@ exports.CarData = class CarData {
     createCar(args) {
         let values = [args.MANUFACTURER, args.MODEL, args.COLOR, args.YEAR_OF_MAN, args.VIN];
         if ('FOR_SALE' in args) {
-            values.push(args.FOR_SALE)
+            values.push(args.FOR_SALE ? 1 : 0)
         } else {
-            values.push(false);
+            values.push(0);
         }
         if ('USED' in args) {
-            values.push(args.USED)
+            values.push(args.USED ? 1 : 0)
         } else {
-            values.push(false)
+            values.push(0)
         }
         return new Promise((carInsertSuccess, carInsertFail) => {
             this.db.run('INSERT INTO CAR (MANUFACTURER,MODEL,COLOR,YEAR_OF_MAN,VIN,FOR_SALE,USED) VALUES(?,?,?,?,?,?,?)', values,function (err) {

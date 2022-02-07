@@ -34,4 +34,32 @@ exports.SalesmanData = class SalesmanData {
             });
         });
     }
+
+    getCarsSoldBySalesman(id) {
+        return new Promise((resolve, reject) => {
+            let query = `SELECT DISTINCT Car.carID,CAR.COLOR,CAR.FOR_SALE,CAR.MANUFACTURER,CAR.MODEL,CAR.USED,CAR.VIN,CAR.YEAR_OF_MAN
+            FROM INVOICE JOIN CAR on INVOICE.carID = CAR.carID
+            WHERE INVOICE.salesmanID = ${id};`;
+            console.log(query);
+            this.db.all(query, function (err, rows) {
+                if (err) {
+                    reject([]);
+                }
+                if (rows.length == 0) {
+                    rows.push({
+                        carID: -1,
+                        MANUFACTURER: `No cars found for salesman with id ${id}`,
+                        MODEL: `No cars found for salesman with id ${id}`,
+                        COLOR: `No cars found for salesman with id ${id}`,
+                        YEAR_OF_MAN: 0,
+                        VIN: `No cars found for salesman with id ${id}`,
+                        FOR_SALE: false,
+                        USED: false 
+                    })
+                }
+                console.log(rows);
+                resolve(rows);
+            });
+        });
+    }
 }

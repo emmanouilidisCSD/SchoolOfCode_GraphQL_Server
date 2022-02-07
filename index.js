@@ -1,9 +1,7 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { schema } = require('./graphql/index.js');
-const { graphql, buildSchema } = require('graphql');
 const { makeExecutableSchema } = require('@graphql-tools/schema');
-const { dataSources } = require('./dataSource/index');
 const graphQLPath = '/graphql';
 const graphQLPort = 4000;
 
